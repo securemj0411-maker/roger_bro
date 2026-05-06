@@ -5,6 +5,12 @@ const {
   supabaseHeaders,
 } = require("./_utils");
 
+function getGuidebookType(request) {
+  const host = request.headers.host || "localhost";
+  const url = new URL(request.url || "/api/guidebook", `https://${host}`);
+  return url.searchParams.get("type") === "html" ? "html" : "pdf";
+}
+
 module.exports = async function handler(request, response) {
   if (!["GET", "HEAD"].includes(request.method)) {
     response.setHeader("Allow", "GET, HEAD");
@@ -13,9 +19,11 @@ module.exports = async function handler(request, response) {
     return;
   }
 
+  const type = getGuidebookType(request);
+  const fallback = type === "html" ? "/assets/guidebook.html" : "/assets/guidebook.pdf";
   const config = getConfig();
   if (!config) {
-    response.writeHead(302, { Location: "/assets/guidebook.pdf" });
+    response.writeHead(302, { Location: fallback });
     response.end();
     return;
   }
@@ -27,16 +35,17 @@ module.exports = async function handler(request, response) {
   });
 
   if (!settingsResponse.ok) {
-    response.writeHead(302, { Location: "/assets/guidebook.pdf" });
+    response.writeHead(302, { Location: fallback });
     response.end();
     return;
   }
 
   const rows = await settingsResponse.json();
-  const path = rows[0]?.value?.path;
+  const value = rows[0]?.value || {};
+  const path = type === "html" ? value.htmlPath : value.pdfPath || value.path;
 
   if (!path) {
-    response.writeHead(302, { Location: "/assets/guidebook.pdf" });
+    response.writeHead(302, { Location: fallback });
     response.end();
     return;
   }

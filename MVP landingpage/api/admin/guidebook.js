@@ -4,10 +4,26 @@ const {
   getConfig,
   parseBody,
   requireAdmin,
-  sanitizeFileName,
+  sanitizeGuidebookFileName,
   sendJson,
   supabaseHeaders,
 } = require("../_utils");
+
+function bufferFromDataUrl(value) {
+  const base64 = String(value || "").split(",").pop();
+  return base64 ? Buffer.from(base64, "base64") : null;
+}
+
+async function uploadObject({ supabaseUrl, serviceRoleKey, path, contentType, buffer }) {
+  return fetch(`${supabaseUrl}/storage/v1/object/${SUPABASE_BUCKET}/${path}`, {
+    method: "POST",
+    headers: supabaseHeaders(serviceRoleKey, {
+      "Content-Type": contentType,
+      "x-upsert": "true",
+    }),
+    body: buffer,
+  });
+}
 
 module.exports = async function handler(request, response) {
   if (request.method !== "POST") {
@@ -23,41 +39,59 @@ module.exports = async function handler(request, response) {
   }
 
   const body = parseBody(request.body);
-  const fileName = sanitizeFileName(body.fileName);
-  const base64 = String(body.contentBase64 || "").split(",").pop();
+  const pdfFileName = sanitizeGuidebookFileName(body.pdfFileName, "guidebook.pdf", ".pdf");
+  const htmlFileName = sanitizeGuidebookFileName(body.htmlFileName, "guidebook.html", ".html");
+  const pdfBuffer = bufferFromDataUrl(body.pdfContentBase64);
+  const htmlBuffer = bufferFromDataUrl(body.htmlContentBase64);
+  const version = String(body.version || "").trim() || new Date().toISOString().slice(0, 10);
 
-  if (!base64) {
-    return sendJson(response, 400, { error: "PDF file is required" });
+  if (!pdfBuffer || !htmlBuffer) {
+    return sendJson(response, 400, { error: "HTML and PDF files are required" });
   }
 
-  const fileBuffer = Buffer.from(base64, "base64");
-  if (!fileBuffer.length || fileBuffer.subarray(0, 4).toString() !== "%PDF") {
+  if (!pdfBuffer.length || pdfBuffer.subarray(0, 4).toString() !== "%PDF") {
     return sendJson(response, 400, { error: "Only PDF files can be uploaded" });
   }
 
+  const htmlStart = htmlBuffer.subarray(0, 512).toString().toLowerCase();
+  if (!htmlStart.includes("<!doctype html") && !htmlStart.includes("<html")) {
+    return sendJson(response, 400, { error: "Only HTML files can be uploaded" });
+  }
+
   const { supabaseUrl, serviceRoleKey } = config;
-  const path = `latest/${Date.now()}-${fileName}`;
-  const uploadUrl = `${supabaseUrl}/storage/v1/object/${SUPABASE_BUCKET}/${path}`;
-  const uploadResponse = await fetch(uploadUrl, {
-    method: "POST",
-    headers: supabaseHeaders(serviceRoleKey, {
-      "Content-Type": "application/pdf",
-      "x-upsert": "true",
-    }),
-    body: fileBuffer,
+  const stamp = Date.now();
+  const pdfPath = `latest/${stamp}-${pdfFileName}`;
+  const htmlPath = `latest/${stamp}-${htmlFileName}`;
+  const htmlUploadResponse = await uploadObject({
+    supabaseUrl,
+    serviceRoleKey,
+    path: htmlPath,
+    contentType: "text/html; charset=utf-8",
+    buffer: htmlBuffer,
+  });
+  const pdfUploadResponse = await uploadObject({
+    supabaseUrl,
+    serviceRoleKey,
+    path: pdfPath,
+    contentType: "application/pdf",
+    buffer: pdfBuffer,
   });
 
-  if (!uploadResponse.ok) {
-    return sendJson(response, 502, { error: "Could not upload guidebook" });
+  if (!htmlUploadResponse.ok || !pdfUploadResponse.ok) {
+    return sendJson(response, 502, { error: "Could not upload guidebook files" });
   }
 
   const settingsPayload = {
     key: SETTINGS_KEY,
     value: {
-      path,
-      fileName,
+      htmlPath,
+      pdfPath,
+      htmlFileName,
+      pdfFileName,
+      version,
       uploadedAt: new Date().toISOString(),
-      size: fileBuffer.length,
+      htmlSize: htmlBuffer.length,
+      pdfSize: pdfBuffer.length,
     },
     updated_at: new Date().toISOString(),
   };
@@ -72,12 +106,14 @@ module.exports = async function handler(request, response) {
   });
 
   if (!settingsResponse.ok) {
-    return sendJson(response, 502, { error: "Uploaded PDF, but could not update latest guidebook" });
+    return sendJson(response, 502, { error: "Uploaded files, but could not update latest guidebook" });
   }
 
   return sendJson(response, 200, {
     ok: true,
-    path,
-    publicUrl: `${supabaseUrl}/storage/v1/object/public/${SUPABASE_BUCKET}/${path}`,
+    htmlPath,
+    pdfPath,
+    htmlUrl: `${supabaseUrl}/storage/v1/object/public/${SUPABASE_BUCKET}/${htmlPath}`,
+    pdfUrl: `${supabaseUrl}/storage/v1/object/public/${SUPABASE_BUCKET}/${pdfPath}`,
   });
 };

@@ -336,7 +336,7 @@ h3{font-size:20px;margin-bottom:10px}
   display:flex;
   gap:10px;
 }
-.admin-auth input,.upload-box input{
+.admin-auth input,.upload-box input,.upload-stack input{
   flex:1;
   min-width:0;
   height:52px;
@@ -347,7 +347,7 @@ h3{font-size:20px;margin-bottom:10px}
   padding:0 14px;
   font-size:15px;
 }
-.admin-auth button,.upload-box button{
+.admin-auth button,.upload-box button,.upload-stack button{
   border:0;
   background:white;
   color:#071426;
@@ -355,6 +355,22 @@ h3{font-size:20px;margin-bottom:10px}
   padding:0 18px;
   border-radius:10px;
   cursor:pointer;
+}
+.upload-stack{
+  display:grid;
+  gap:12px;
+}
+.upload-stack label{
+  display:grid;
+  gap:7px;
+}
+.upload-stack label span{
+  color:#cbd4e5;
+  font-weight:800;
+  font-size:13px;
+}
+.upload-stack button{
+  height:52px;
 }
 .panel-head{
   display:flex;

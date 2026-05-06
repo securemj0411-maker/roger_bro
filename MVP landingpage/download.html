@@ -20,7 +20,7 @@
       <img class="download-mockup" src="./assets/guidebook-mockup.png" alt="무료 가이드북 목업" />
 
       <div class="download-actions">
-        <a class="primary-btn" href="./assets/guidebook.html" target="_blank" rel="noopener">웹에서 바로 보기</a>
+        <a id="htmlViewLink" class="primary-btn" href="./assets/guidebook.html" target="_blank" rel="noopener">웹에서 바로 보기</a>
         <a id="pdfDownloadLink" class="secondary-btn" href="./assets/guidebook.pdf" download>PDF 다운로드</a>
         <a class="secondary-btn" href="./index.html">랜딩페이지로 돌아가기</a>
       </div>
@@ -43,6 +43,8 @@
     if (saved) document.body.dataset.lead = "captured";
     if (window.location.protocol !== "file:") {
       const pdfLink = document.getElementById("pdfDownloadLink");
+      const htmlLink = document.getElementById("htmlViewLink");
+      htmlLink.href = "/api/guidebook?type=html";
       pdfLink.href = "/api/guidebook";
       pdfLink.removeAttribute("download");
     }

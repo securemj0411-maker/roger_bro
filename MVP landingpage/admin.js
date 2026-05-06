@@ -6,7 +6,9 @@ const leadCount = document.getElementById("leadCount");
 const refreshLeads = document.getElementById("refreshLeads");
 const exportLeads = document.getElementById("exportLeads");
 const guidebookForm = document.getElementById("guidebookForm");
-const guidebookFile = document.getElementById("guidebookFile");
+const guidebookHtmlFile = document.getElementById("guidebookHtmlFile");
+const guidebookPdfFile = document.getElementById("guidebookPdfFile");
+const guidebookVersion = document.getElementById("guidebookVersion");
 const uploadStatus = document.getElementById("uploadStatus");
 
 function getPassword() {
@@ -91,30 +93,43 @@ exportLeads.addEventListener("click", async () => {
 
 guidebookForm.addEventListener("submit", async (event) => {
   event.preventDefault();
-  const file = guidebookFile.files[0];
+  const htmlFile = guidebookHtmlFile.files[0];
+  const pdfFile = guidebookPdfFile.files[0];
 
-  if (!file || file.type !== "application/pdf") {
-    setStatus("PDF 파일만 업로드할 수 있습니다.", true);
+  if (!htmlFile || !htmlFile.name.toLowerCase().endsWith(".html")) {
+    setStatus("HTML 파일을 선택해주세요.", true);
     return;
   }
 
-  setStatus("업로드 중...");
-  const contentBase64 = await readFileAsBase64(file);
+  if (!pdfFile || pdfFile.type !== "application/pdf") {
+    setStatus("PDF 파일을 선택해주세요.", true);
+    return;
+  }
+
+  setStatus("HTML + PDF 업로드 중...");
+  const htmlContentBase64 = await readFileAsBase64(htmlFile);
+  const pdfContentBase64 = await readFileAsBase64(pdfFile);
   const response = await fetch("/api/admin/guidebook", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       "x-admin-password": getPassword(),
     },
-    body: JSON.stringify({ fileName: file.name, contentBase64 }),
+    body: JSON.stringify({
+      htmlFileName: htmlFile.name,
+      pdfFileName: pdfFile.name,
+      htmlContentBase64,
+      pdfContentBase64,
+      version: guidebookVersion.value,
+    }),
   });
 
   if (!response.ok) {
-    setStatus("업로드 실패. 비밀번호, 파일 크기, Supabase 설정을 확인하세요.", true);
+    setStatus("업로드 실패. 비밀번호, 파일 형식, Supabase 설정을 확인하세요.", true);
     return;
   }
 
-  setStatus("최신 PDF로 업데이트됐습니다.");
+  setStatus("최신 HTML + PDF 세트로 공개됐습니다.");
   guidebookForm.reset();
 });
 

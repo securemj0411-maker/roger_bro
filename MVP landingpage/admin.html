@@ -29,12 +29,23 @@
     <section id="adminWorkspace" class="admin-grid" hidden>
       <article class="admin-panel">
         <p class="eyebrow">GUIDEBOOK</p>
-        <h2>최신 PDF 업로드</h2>
-        <form id="guidebookForm" class="upload-box">
-          <input id="guidebookFile" type="file" accept="application/pdf" required />
-          <button type="submit">PDF 업데이트</button>
+        <h2>최신 가이드북 공개</h2>
+        <form id="guidebookForm" class="upload-stack">
+          <label>
+            <span>HTML 웹보기 파일</span>
+            <input id="guidebookHtmlFile" type="file" accept=".html,text/html" required />
+          </label>
+          <label>
+            <span>PDF 다운로드 파일</span>
+            <input id="guidebookPdfFile" type="file" accept="application/pdf,.pdf" required />
+          </label>
+          <label>
+            <span>버전명</span>
+            <input id="guidebookVersion" type="text" placeholder="vol-01 또는 2026-05" />
+          </label>
+          <button type="submit">HTML + PDF 공개</button>
         </form>
-        <p id="uploadStatus" class="admin-status">업로드한 PDF가 다운로드 버튼에 즉시 연결됩니다.</p>
+        <p id="uploadStatus" class="admin-status">두 파일을 함께 올리면 웹보기와 PDF 다운로드가 같은 버전으로 연결됩니다.</p>
       </article>
 
       <article class="admin-panel">

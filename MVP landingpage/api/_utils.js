@@ -72,12 +72,23 @@ function sanitizeFileName(fileName) {
   return safe.endsWith(".pdf") ? safe : `${safe || "guidebook"}.pdf`;
 }
 
+function sanitizeGuidebookFileName(fileName, fallback, extension) {
+  const safe = String(fileName || fallback)
+    .toLowerCase()
+    .replace(/[^a-z0-9._-]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+  const normalized = safe || fallback;
+
+  return normalized.endsWith(extension) ? normalized : `${normalized}${extension}`;
+}
+
 module.exports = {
   SETTINGS_KEY,
   SUPABASE_BUCKET,
   getConfig,
   parseBody,
   requireAdmin,
+  sanitizeGuidebookFileName,
   sanitizeFileName,
   sendJson,
   sendText,

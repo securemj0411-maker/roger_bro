@@ -21,7 +21,7 @@ ADMIN_PASSWORD
 ## 관리자 페이지
 - `/admin.html`에서 관리자 비밀번호를 입력합니다.
 - 이메일 리스트를 조회하고 엑셀용 CSV로 다운로드할 수 있습니다.
-- 새 PDF를 업로드하면 `download.html`의 PDF 다운로드 버튼이 최신 파일로 연결됩니다.
+- HTML 파일과 PDF 파일을 세트로 업로드하면 `download.html`의 웹 보기/PDF 다운로드 버튼이 같은 버전으로 연결됩니다.
 - 로컬 파일 모드에서는 API가 없으므로 관리자 기능은 `vercel dev` 또는 배포 환경에서 테스트합니다.
 
 ## Vercel 배포
