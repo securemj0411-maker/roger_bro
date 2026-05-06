@@ -1,11 +1,42 @@
-async function handleLeadSubmit(event, inputId) {
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+function getEmailFromForm(form) {
+  const local = form.querySelector(".email-local")?.value.trim();
+  const domainSelect = form.querySelector(".email-domain");
+  const customDomain = form.querySelector(".email-custom-domain")?.value.trim();
+  const domain = domainSelect?.value === "custom" ? customDomain : domainSelect?.value;
+
+  if (!local || !domain) return "";
+
+  return `${local}@${domain}`.toLowerCase();
+}
+
+function setupEmailBuilders() {
+  document.querySelectorAll("[data-email-builder]").forEach((builder) => {
+    const domainSelect = builder.querySelector(".email-domain");
+    const customDomain = builder.querySelector(".email-custom-domain");
+
+    domainSelect?.addEventListener("change", () => {
+      const isCustom = domainSelect.value === "custom";
+      customDomain.hidden = !isCustom;
+      customDomain.required = isCustom;
+
+      if (isCustom) {
+        customDomain.focus();
+      } else {
+        customDomain.value = "";
+      }
+    });
+  });
+}
+
+async function handleLeadSubmit(event) {
   event.preventDefault();
-  const input = document.getElementById(inputId);
   const form = event.currentTarget;
   const button = form.querySelector("button");
-  const email = input.value.trim();
+  const email = getEmailFromForm(form);
 
-  if (!email || !email.includes("@")) {
+  if (!EMAIL_PATTERN.test(email)) {
     alert("이메일을 제대로 입력해주세요.");
     return;
   }
@@ -53,5 +84,7 @@ async function handleLeadSubmit(event, inputId) {
   }
 }
 
-document.getElementById("leadForm")?.addEventListener("submit", (e) => handleLeadSubmit(e, "email"));
-document.getElementById("leadFormBottom")?.addEventListener("submit", (e) => handleLeadSubmit(e, "emailBottom"));
+setupEmailBuilders();
+
+document.getElementById("leadForm")?.addEventListener("submit", handleLeadSubmit);
+document.getElementById("leadFormBottom")?.addEventListener("submit", handleLeadSubmit);

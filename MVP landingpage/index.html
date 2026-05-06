@@ -24,7 +24,19 @@
         </p>
 
         <form id="leadForm" class="lead-form">
-          <input id="email" type="email" placeholder="이메일 입력" required />
+          <div class="email-builder" data-email-builder>
+            <input id="emailLocal" class="email-local" type="text" inputmode="email" autocomplete="email" placeholder="이메일 아이디" required />
+            <span class="email-at">@</span>
+            <select id="emailDomain" class="email-domain" aria-label="이메일 도메인">
+              <option value="gmail.com">gmail.com</option>
+              <option value="naver.com">naver.com</option>
+              <option value="daum.net">daum.net</option>
+              <option value="kakao.com">kakao.com</option>
+              <option value="hanmail.net">hanmail.net</option>
+              <option value="custom">직접입력</option>
+            </select>
+            <input id="emailCustomDomain" class="email-custom-domain" type="text" inputmode="email" placeholder="도메인 입력" hidden />
+          </div>
           <button type="submit">무료 가이드북 받기</button>
         </form>
         <p class="micro">
@@ -103,7 +115,19 @@
       <h2>무료 가이드북 받기</h2>
       <p>이메일 입력 후 바로 다운로드 페이지로 이동합니다.</p>
       <form id="leadFormBottom" class="lead-form">
-        <input id="emailBottom" type="email" placeholder="이메일 입력" required />
+        <div class="email-builder" data-email-builder>
+          <input id="emailLocalBottom" class="email-local" type="text" inputmode="email" autocomplete="email" placeholder="이메일 아이디" required />
+          <span class="email-at">@</span>
+          <select id="emailDomainBottom" class="email-domain" aria-label="이메일 도메인">
+            <option value="gmail.com">gmail.com</option>
+            <option value="naver.com">naver.com</option>
+            <option value="daum.net">daum.net</option>
+            <option value="kakao.com">kakao.com</option>
+            <option value="hanmail.net">hanmail.net</option>
+            <option value="custom">직접입력</option>
+          </select>
+          <input id="emailCustomDomainBottom" class="email-custom-domain" type="text" inputmode="email" placeholder="도메인 입력" hidden />
+        </div>
         <button type="submit">지금 받기</button>
       </form>
     </section>
