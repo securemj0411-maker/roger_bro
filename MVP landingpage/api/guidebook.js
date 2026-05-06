@@ -6,8 +6,8 @@ const {
 } = require("./_utils");
 
 module.exports = async function handler(request, response) {
-  if (request.method !== "GET") {
-    response.setHeader("Allow", "GET");
+  if (!["GET", "HEAD"].includes(request.method)) {
+    response.setHeader("Allow", "GET, HEAD");
     response.statusCode = 405;
     response.end("Method not allowed");
     return;
