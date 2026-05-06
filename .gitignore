@@ -3,3 +3,6 @@
 .env.local
 .vercel
 node_modules
+local_landing_check.png
+local_landing_mobile_check.png
+local_admin_check.png

@@ -21,7 +21,7 @@
 
       <div class="download-actions">
         <a class="primary-btn" href="./assets/guidebook.html" target="_blank" rel="noopener">웹에서 바로 보기</a>
-        <a class="secondary-btn" href="./assets/guidebook.pdf" download>PDF 다운로드</a>
+        <a id="pdfDownloadLink" class="secondary-btn" href="./assets/guidebook.pdf" download>PDF 다운로드</a>
         <a class="secondary-btn" href="./index.html">랜딩페이지로 돌아가기</a>
       </div>
 
@@ -41,6 +41,11 @@
   <script>
     const saved = localStorage.getItem("razerLeadEmail");
     if (saved) document.body.dataset.lead = "captured";
+    if (window.location.protocol !== "file:") {
+      const pdfLink = document.getElementById("pdfDownloadLink");
+      pdfLink.href = "/api/guidebook";
+      pdfLink.removeAttribute("download");
+    }
   </script>
 </body>
 </html>

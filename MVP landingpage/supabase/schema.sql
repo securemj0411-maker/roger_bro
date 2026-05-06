@@ -30,3 +30,24 @@ with check (false);
 
 create index if not exists leads_created_at_idx on public.leads (created_at desc);
 create index if not exists leads_source_idx on public.leads (source);
+
+create table if not exists public.site_settings (
+  key text primary key,
+  value jsonb not null default '{}'::jsonb,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
+);
+
+alter table public.site_settings enable row level security;
+
+grant select, insert, update on public.site_settings to service_role;
+
+create policy "No public setting reads"
+on public.site_settings
+for select
+to anon, authenticated
+using (false);
+
+insert into storage.buckets (id, name, public)
+values ('guidebooks', 'guidebooks', true)
+on conflict (id) do update set public = true;

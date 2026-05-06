@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>관리자 | 라저형의 편입영어</title>
+  <meta name="robots" content="noindex,nofollow" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <main class="admin-page">
+    <header class="admin-header">
+      <div>
+        <p class="eyebrow">ADMIN CONSOLE</p>
+        <h1>리드와 가이드북 관리</h1>
+      </div>
+      <a class="secondary-btn" href="./index.html">랜딩페이지</a>
+    </header>
+
+    <section class="admin-panel">
+      <h2>접속</h2>
+      <form id="adminAuthForm" class="admin-auth">
+        <input id="adminPassword" type="password" placeholder="관리자 비밀번호" autocomplete="current-password" required />
+        <button type="submit">관리자 열기</button>
+      </form>
+      <p class="micro">비밀번호는 브라우저에 임시 저장됩니다.</p>
+    </section>
+
+    <section id="adminWorkspace" class="admin-grid" hidden>
+      <article class="admin-panel">
+        <p class="eyebrow">GUIDEBOOK</p>
+        <h2>최신 PDF 업로드</h2>
+        <form id="guidebookForm" class="upload-box">
+          <input id="guidebookFile" type="file" accept="application/pdf" required />
+          <button type="submit">PDF 업데이트</button>
+        </form>
+        <p id="uploadStatus" class="admin-status">업로드한 PDF가 다운로드 버튼에 즉시 연결됩니다.</p>
+      </article>
+
+      <article class="admin-panel">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">LEADS</p>
+            <h2>이메일 리스트</h2>
+          </div>
+          <div class="panel-actions">
+            <button id="refreshLeads" type="button" class="secondary-btn">새로고침</button>
+            <button id="exportLeads" type="button" class="primary-btn small">엑셀용 CSV</button>
+          </div>
+        </div>
+        <div class="lead-summary">
+          <strong id="leadCount">0</strong>
+          <span>collected emails</span>
+        </div>
+        <div class="lead-table-wrap">
+          <table class="lead-table">
+            <thead>
+              <tr>
+                <th>이메일</th>
+                <th>소스</th>
+                <th>수집일</th>
+              </tr>
+            </thead>
+            <tbody id="leadRows">
+              <tr><td colspan="3">비밀번호 입력 후 조회됩니다.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <script src="./admin.js"></script>
+</body>
+</html>
