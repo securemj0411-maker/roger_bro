@@ -433,9 +433,34 @@ h3{font-size:20px;margin-bottom:10px}
 }
 
 @media (max-width:860px){
-  .hero{grid-template-columns:1fr;min-height:auto;padding:56px 0}
-  .hero-art{order:-1}
-  .hero-art img{max-height:420px}
+  .page{width:min(100% - 28px,1120px);padding-bottom:56px}
+  .nav{height:58px}
+  .nav-link{padding:8px 12px;font-size:13px}
+  .hero{
+    grid-template-columns:1fr;
+    min-height:auto;
+    padding:28px 0 34px;
+    gap:24px;
+    align-items:start;
+  }
+  .hero-copy{display:flex;flex-direction:column}
+  .hero-copy .eyebrow{margin-bottom:12px}
+  h1{
+    font-size:clamp(38px,11vw,54px);
+    line-height:1.08;
+    margin-bottom:16px;
+  }
+  .sub{
+    font-size:16px;
+    line-height:1.65;
+    margin-bottom:18px;
+  }
+  .lead-form{
+    border-radius:16px;
+    padding:7px;
+  }
+  .hero-art img{max-height:300px}
+  .hero-art::before{inset:18% 12%;filter:blur(56px)}
   .proof-strip{grid-template-columns:1fr 1fr;margin-bottom:44px}
   .proof-strip div{border-bottom:1px solid var(--line)}
   .cards{grid-template-columns:1fr}
@@ -447,6 +472,13 @@ h3{font-size:20px;margin-bottom:10px}
 }
 
 @media (max-width:520px){
+  .page{width:min(100% - 22px,1120px)}
+  .brand{font-size:15px}
+  .nav-link{font-size:12px}
+  .hero{padding-top:20px;gap:18px}
+  .eyebrow{font-size:10px;letter-spacing:.14em}
+  h1{font-size:38px;letter-spacing:-.055em}
+  .sub{font-size:15px;margin-bottom:14px}
   .email-builder{
     grid-template-columns:1fr;
   }
@@ -461,6 +493,19 @@ h3{font-size:20px;margin-bottom:10px}
     height:52px;
     margin-top:10px;
   }
+  .lead-form input,.lead-form select{
+    height:48px;
+    font-size:15px;
+  }
+  .lead-form button{
+    min-height:50px;
+    font-size:16px;
+  }
+  .micro{
+    font-size:12px;
+    margin-top:9px;
+  }
+  .hero-art img{max-height:230px}
   .panel-actions{
     justify-content:flex-start;
   }
