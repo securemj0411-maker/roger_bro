@@ -439,18 +439,14 @@ h3{font-size:20px;margin-bottom:10px}
   .hero{
     grid-template-columns:1fr;
     min-height:auto;
-    padding:28px 0 34px;
-    gap:24px;
+    padding:22px 0 30px;
+    gap:18px;
     align-items:start;
   }
   .hero-art{order:-1;text-align:center}
   .hero-copy{display:flex;flex-direction:column}
   .hero-copy .eyebrow{margin-bottom:12px}
-  h1{
-    font-size:clamp(38px,11vw,54px);
-    line-height:1.08;
-    margin-bottom:16px;
-  }
+  h1{font-size:clamp(34px,10vw,48px);line-height:1.08;margin-bottom:12px}
   .sub{
     font-size:16px;
     line-height:1.65;
@@ -458,9 +454,9 @@ h3{font-size:20px;margin-bottom:10px}
   }
   .lead-form{
     border-radius:16px;
-    padding:7px;
+    padding:6px;
   }
-  .hero-art img{max-height:230px;width:min(62vw,240px)}
+  .hero-art img{max-height:205px;width:min(56vw,220px)}
   .hero-art::before{inset:18% 12%;filter:blur(56px)}
   .proof-strip{grid-template-columns:1fr 1fr;margin-bottom:44px}
   .proof-strip div{border-bottom:1px solid var(--line)}
@@ -476,10 +472,10 @@ h3{font-size:20px;margin-bottom:10px}
   .page{width:min(100% - 22px,1120px)}
   .brand{font-size:15px}
   .nav-link{font-size:12px}
-  .hero{padding-top:20px;gap:18px}
+  .hero{padding-top:14px;gap:12px}
   .eyebrow{font-size:10px;letter-spacing:.14em}
-  h1{font-size:38px;letter-spacing:-.055em}
-  .sub{font-size:15px;margin-bottom:14px}
+  h1{font-size:32px;letter-spacing:-.045em;margin-bottom:9px}
+  .sub{font-size:14.5px;line-height:1.55;margin-bottom:10px}
   .email-builder{
     grid-template-columns:1fr;
   }
@@ -501,12 +497,14 @@ h3{font-size:20px;margin-bottom:10px}
   .lead-form button{
     min-height:50px;
     font-size:16px;
+    padding-left:12px;
+    padding-right:12px;
   }
   .micro{
     font-size:12px;
-    margin-top:9px;
+    margin-top:7px;
   }
-  .hero-art img{max-height:172px;width:min(56vw,190px)}
+  .hero-art img{max-height:145px;width:min(50vw,168px)}
   .panel-actions{
     justify-content:flex-start;
   }
