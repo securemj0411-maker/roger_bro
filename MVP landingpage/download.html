@@ -41,13 +41,6 @@
   <script>
     const saved = localStorage.getItem("razerLeadEmail");
     if (saved) document.body.dataset.lead = "captured";
-    if (window.location.protocol !== "file:") {
-      const pdfLink = document.getElementById("pdfDownloadLink");
-      const htmlLink = document.getElementById("htmlViewLink");
-      htmlLink.href = "/api/guidebook?type=html";
-      pdfLink.href = "/api/guidebook";
-      pdfLink.removeAttribute("download");
-    }
   </script>
 </body>
 </html>
