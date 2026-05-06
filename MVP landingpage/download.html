@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>가이드북 다운로드 | 라저형의 편입영어</title>
+  <meta name="description" content="무료 가이드북 다운로드 페이지" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <main class="download-page">
+    <section class="download-card">
+      <p class="eyebrow">DOWNLOAD READY</p>
+      <h1>가이드북 준비 완료.</h1>
+      <p class="sub">
+        웹에서 바로 읽거나 PDF로 저장하세요.
+        이 문서는 편입 영어 기사 인풋을 시작하기 위한 첫 번째 로드맵입니다.
+      </p>
+
+      <img class="download-mockup" src="./assets/guidebook-mockup.png" alt="무료 가이드북 목업" />
+
+      <div class="download-actions">
+        <a class="primary-btn" href="./assets/guidebook.html" target="_blank" rel="noopener">웹에서 바로 보기</a>
+        <a class="secondary-btn" href="./assets/guidebook.pdf" download>PDF 다운로드</a>
+        <a class="secondary-btn" href="./index.html">랜딩페이지로 돌아가기</a>
+      </div>
+
+      <div class="upsell">
+        <p class="eyebrow">NEXT STEP</p>
+        <h2>The Input System</h2>
+        <p>
+          이 PDF는 시작점입니다. 실제로 매일 뭘 읽어야 하는지,
+          난이도·핵심 단어·독해 포인트까지 계속 받고 싶다면 The Input System으로 이어가세요.
+        </p>
+        <a class="primary-btn small" href="#" target="_blank" rel="noopener">The Input System 보기</a>
+        <p class="micro">Toss/결제 링크가 생기면 위 href="#"만 바꾸면 됩니다.</p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const saved = localStorage.getItem("razerLeadEmail");
+    if (saved) document.body.dataset.lead = "captured";
+  </script>
+</body>
+</html>
