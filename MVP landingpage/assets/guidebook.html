@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>라저형의 편입영어 — 잡지·섹션 로드맵</title>
+<title>라저형의 편입영어 — Article Input Roadmap</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700;900&family=Noto+Sans+KR:wght@300;400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -38,18 +38,46 @@ body{
 .inner{padding:13mm 15mm 10mm;flex:1;display:flex;flex-direction:column;}
 .pnum{position:absolute;bottom:9mm;right:15mm;font-family:'DM Mono',monospace;font-size:9px;color:var(--rule);letter-spacing:1px;}
 
-/* ── NEXT PAGE HOOK ── */
+/* ── NEXT BRIEFING ── */
 .next-hook{
-  margin-top:auto;
-  padding-top:12px;
+  margin-top:18mm;
+  padding:15px 18px 16px 20px;
+  border-left:4px solid var(--gold);
+  background:linear-gradient(90deg,#F7FAFF 0%,#FFFFFF 100%);
   border-top:1px solid var(--rule);
-  font-size:11px;
+  border-right:1px solid var(--rule);
+  border-bottom:1px solid var(--rule);
+  color:var(--ink);
+  display:block;
+  font-style:normal;
+}
+.nh-kicker{
+  font-family:'DM Mono',monospace;
+  font-size:8.5px;
+  letter-spacing:2px;
+  text-transform:uppercase;
   color:var(--mid);
-  display:flex;
-  align-items:center;
-  justify-content:flex-end;
-  gap:5px;
-  font-style:italic;
+  margin-bottom:6px;
+}
+.nh-kicker strong{
+  font-family:'Noto Sans KR',sans-serif;
+  font-size:10.5px;
+  letter-spacing:0;
+  color:var(--navy);
+  margin-right:8px;
+}
+.nh-title{
+  font-family:'Noto Serif KR',serif;
+  font-size:14px;
+  font-weight:700;
+  color:var(--navy);
+  line-height:1.45;
+  margin-bottom:5px;
+}
+.nh-copy{
+  font-size:11px;
+  line-height:1.65;
+  color:var(--gray);
 }
 
 /* ══ COVER ══ */
@@ -248,23 +276,28 @@ td.bad{color:var(--red);}
 .dont-list li::before{content:'✕';color:var(--red);font-weight:700;flex-shrink:0;margin-top:1px;}
 
 /* ══ CTA PAGE ══ */
-.cta-hero{background:var(--navy);padding:20px 22px 18px;display:flex;gap:18px;align-items:flex-end;}
+.cta-hero{background:var(--navy);padding:19px 22px 17px;display:flex;gap:18px;align-items:flex-end;}
 .cta-photo{width:36mm;flex-shrink:0;}
 .cta-photo img{width:100%;display:block;mix-blend-mode:screen;}
 .cta-hero-text{flex:1;}
 .cta-ey{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:8px;}
-.cta-headline{font-family:'Noto Serif KR',serif;font-size:18px;font-weight:700;color:white;line-height:1.5;margin-bottom:10px;}
+.cta-headline{font-family:'Noto Serif KR',serif;font-size:18px;font-weight:700;color:white;line-height:1.48;margin-bottom:10px;}
 .cta-sub{font-size:11.5px;color:rgba(255,255,255,0.55);line-height:1.7;}
-.cta-body{padding:16px 18px;flex:1;display:flex;flex-direction:column;gap:12px;}
+.cta-body{padding:12px 18px;flex:1;display:flex;flex-direction:column;gap:8px;}
 .svc-block{border:1px solid var(--rule);overflow:hidden;}
 .svc-head{background:var(--light);padding:9px 14px;display:flex;align-items:center;gap:7px;border-bottom:1px solid var(--rule);}
 .svc-name{font-family:'Noto Serif KR',serif;font-size:13px;font-weight:700;color:var(--navy);}
 .svc-badge{font-family:'DM Mono',monospace;font-size:7.5px;background:var(--gold);color:white;padding:2px 7px;letter-spacing:1px;}
-.svc-items{padding:10px 14px;display:grid;grid-template-columns:1fr 1fr;gap:5px;}
-.s-item{display:flex;gap:5px;font-size:11px;line-height:1.5;align-items:flex-start;}
+.svc-intro{padding:8px 14px 0;font-size:10.6px;color:var(--ink);line-height:1.55;}
+.svc-intro strong{color:var(--navy);}
+.svc-items{padding:8px 14px 9px;display:grid;grid-template-columns:1fr 1fr;gap:4px 10px;}
+.s-item{display:flex;gap:5px;font-size:10.2px;line-height:1.4;align-items:flex-start;}
 .s-item::before{content:'✓';color:var(--mid);font-weight:700;flex-shrink:0;}
+.s-item strong{color:var(--navy);font-weight:700;}
 .pc{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);}
-.pc-col{background:white;padding:12px 14px;text-align:center;}
+.pc-col{background:white;padding:11px 14px;text-align:center;}
+.pc-col.bad{background:#FAFBFD;color:var(--gray);position:relative;}
+.pc-col.bad::after{content:'아님';position:absolute;top:8px;right:10px;font-size:7px;color:var(--red);border:1px solid rgba(202,47,32,0.25);padding:1px 5px;font-family:'DM Mono',monospace;letter-spacing:0.5px;}
 .pc-col.active{background:var(--navy);}
 .pc-label{font-size:8.5px;letter-spacing:1px;text-transform:uppercase;color:var(--gray);font-family:'DM Mono',monospace;margin-bottom:5px;}
 .pc-col.active .pc-label{color:rgba(255,255,255,0.4);}
@@ -275,7 +308,7 @@ td.bad{color:var(--red);}
 
 /* social proof */
 .social-proof{
-  text-align:center;padding:10px 14px;
+  text-align:center;padding:9px 14px;
   background:var(--gold-bg);border:1px solid rgba(181,131,26,0.25);
   font-size:11.5px;color:var(--gold);font-weight:600;
 }
@@ -283,18 +316,79 @@ td.bad{color:var(--red);}
 /* urgency block */
 .urgency{
   background:var(--red-bg);border-left:3px solid var(--red);
-  padding:10px 14px;font-size:11.5px;color:var(--red);
-  line-height:1.6;
+  padding:9px 14px;font-size:10.8px;color:var(--red);
+  line-height:1.55;
 }
 .urgency strong{color:var(--red);font-weight:700;}
 
-.cta-bottom{border-top:2px solid var(--navy);padding:12px 18px 14px;}
-.cta-urgent{font-size:10px;color:var(--red);font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:4px;}
-.cta-btn{display:block;background:var(--navy);color:white;text-align:center;padding:14px;font-family:'Noto Serif KR',serif;font-size:14px;font-weight:700;text-decoration:none;margin-bottom:5px;}
+.cta-bottom{border-top:2px solid var(--navy);padding:10px 18px 12px;}
+.cta-urgent{font-size:10px;color:var(--red);font-weight:700;margin-bottom:8px;text-align:center;}
+.cta-btn{display:block;background:var(--gold);color:white;text-align:center;padding:14px;font-family:'Noto Serif KR',serif;font-size:14.5px;font-weight:900;text-decoration:none;margin-bottom:5px;border:1px solid #9D6F13;box-shadow:0 5px 0 rgba(15,37,68,0.18);letter-spacing:0.2px;}
+.cta-btn:hover{filter:brightness(0.96);}
 .cta-link{text-align:center;font-family:'DM Mono',monospace;font-size:9.5px;color:var(--mid);margin-bottom:10px;}
 .cta-sec{text-align:center;font-size:10.5px;color:var(--gray);padding-top:8px;border-top:1px solid var(--rule);}
 .cta-fbrand{text-align:center;margin-top:8px;font-family:'Noto Serif KR',serif;font-size:13px;font-weight:900;color:var(--navy);}
 .cta-ftag{text-align:center;font-size:9.5px;color:var(--gray);margin-top:2px;}
+
+/* mobile/PDF readability pass */
+body{font-size:13.5px;}
+.pnum{font-size:9.5px;}
+.nh-kicker{font-size:9px;}
+.nh-kicker strong{font-size:11px;}
+.nh-title{font-size:14.5px;}
+.nh-copy{font-size:11.8px;}
+.cv-eyebrow{font-size:9.5px;}
+.cv-name-tag{font-size:11.8px;}
+.cv-headline{font-size:11.8px;}
+.cv-tagline{font-size:13px;}
+.cv-badge{font-size:10.8px;}
+.cv-stat-n{font-size:17.5px;}
+.cv-stat-l{font-size:9px;}
+.cv-brand{font-size:11.5px;}
+.cv-klink{font-size:9px;}
+.ey{font-size:9.5px;}
+.st.sm{font-size:14.5px;}
+.anger-list li{font-size:13px;}
+.anger-sub{font-size:12px;}
+.pb-title{font-size:12.5px;}
+.pb-row{font-size:12px;}
+.pb-val{font-size:11.5px;}
+.pb-story{font-size:12.5px;}
+.box-title{font-size:12.5px;}
+.p-text{font-size:11.8px;}
+table{font-size:11px;}
+thead th{font-size:10.8px;}
+tbody td{line-height:1.55;}
+.inline-callout{font-size:11.8px;}
+.h1-tag,.h2-label{font-size:8.8px;}
+.h1-intro{font-size:12.5px;}
+.h1-row{font-size:11.6px;}
+.h1-pval{font-size:11px;}
+.h1-tl{font-size:12px;}
+.h1-story{font-size:12px;}
+.h1-cta{font-size:11.5px;}
+.h2-sub{font-size:12px;}
+.h2-sig{font-size:9.5px;}
+.r-period{font-size:10.5px;}
+.r-tag{font-size:8.2px;}
+.r-content{font-size:11.7px;}
+.dont-list li{font-size:12px;}
+.cta-ey{font-size:8.8px;}
+.cta-sub{font-size:12px;}
+.svc-name{font-size:13.5px;}
+.svc-badge{font-size:8.2px;}
+.svc-intro{font-size:11.2px;}
+.s-item{font-size:10.8px;}
+.pc-label{font-size:9px;}
+.pc-sub{font-size:9.2px;}
+.pc-col.bad::after{font-size:7.8px;}
+.social-proof{font-size:12px;}
+.urgency{font-size:11.4px;}
+.cta-urgent{font-size:11px;}
+.cta-btn{font-size:15px;}
+.cta-link{font-size:10px;}
+.cta-sec{font-size:11px;}
+.cta-ftag{font-size:10px;}
 
 @media print{
   body{background:white;}
@@ -315,12 +409,13 @@ td.bad{color:var(--red);}
         <div class="cv-headline">수능 3~4등급 → 서성한중경외시건 최초합<br>학원 ₩0 · 인강 ₩0 · 해외 경험 없음 · 8개월</div>
       </div>
       <div class="cv-title-wrap" style="margin-top:8mm;">
-        <div class="cv-title">영어 잡지·섹션<br>로드맵</div>
+        <div class="cv-title">편입영어는<br>어떤 영어를<br>읽어야 느는가</div>
         <div class="cv-bar"></div>
         <div class="cv-tagline">
-          서강대 시험에서 제가 읽었던 기사가<br>
-          토씨 하나 안 바뀌고 그대로 나왔습니다.<br>
-          <span style="color:rgba(255,255,255,0.4);font-size:11px;">어떤 잡지를, 어떤 섹션을, 왜 읽는지 — 전부 정리했습니다.</span>
+          Article Input Roadmap<br>
+          Economist, NYT, Foreign Affairs를<br>
+          편입영어 관점으로 읽는 법<br>
+          <span style="color:rgba(255,255,255,0.4);font-size:11px;">무엇을 읽고, 무엇을 버리고, 무엇을 가져갈지 — 전부 정리했습니다.</span>
         </div>
         <div class="cv-badges">
           <span class="cv-badge">서강대 합격</span><span class="cv-badge">성균관대 합격</span>
@@ -337,7 +432,7 @@ td.bad{color:var(--red);}
         </div>
         <div class="cv-foot">
           <div class="cv-brand">라저형의 편입영어</div>
-          <div class="cv-klink">open.kakao.com/o/s9rjTCti</div>
+          <div class="cv-klink">open.kakao.com/o/gAr8LMti</div>
         </div>
       </div>
     </div>
@@ -348,7 +443,7 @@ td.bad{color:var(--red);}
   <div class="pnum">01</div>
 </div>
 
-<!-- ══ P2 ANGER + PRICE BOMB ══ -->
+<!-- ══ P2 ANGER + INPUT PROBLEM ══ -->
 <div class="page">
   <div class="abar"></div>
   <div class="inner">
@@ -374,32 +469,28 @@ td.bad{color:var(--red);}
 
     <div class="price-bomb">
       <div style="font-family:'Noto Serif KR',serif;font-size:17px;font-weight:700;color:var(--navy);margin-bottom:6px;line-height:1.5;">
-        이 방법, 직접 해보려면 매달 얼마인지 아세요?
+        문제는 영어를 안 읽는 게 아닙니다.<br>무엇을 읽어야 하는지 모르는 겁니다.
       </div>
-      <div class="pb-title" style="font-size:11px;margin-bottom:12px;">각 잡지 개별 구독 시 / 월</div>
+      <div class="pb-title" style="font-size:11px;margin-bottom:12px;">좋은 영어는 이미 널려 있습니다. 부족한 건 접근권이 아니라 선별 기준입니다.</div>
       <div class="pb-rows">
-        <div class="pb-row"><span>The Economist</span><span class="pb-val">₩35,000/월</span></div>
-        <div class="pb-row"><span>Foreign Affairs</span><span class="pb-val">₩18,000/월</span></div>
-        <div class="pb-row"><span>HBR</span><span class="pb-val">₩20,000/월</span></div>
-        <div class="pb-row"><span>Bloomberg Businessweek</span><span class="pb-val">₩22,000/월</span></div>
-        <div class="pb-row"><span>Wired + Scientific American</span><span class="pb-val">₩22,000/월</span></div>
+        <div class="pb-row"><span>The Economist를 열어도</span><span class="pb-val">오늘 읽을 글을 못 고른다</span></div>
+        <div class="pb-row"><span>NYT Opinion을 봐도</span><span class="pb-val">어떤 논리를 봐야 할지 모른다</span></div>
+        <div class="pb-row"><span>Foreign Affairs를 읽어도</span><span class="pb-val">난이도 조절에 실패한다</span></div>
+        <div class="pb-row"><span>좋은 문장을 만나도</span><span class="pb-val">표현과 구조를 못 뽑는다</span></div>
       </div>
       <div class="pb-total">
-        <span class="pb-total-l">합계</span>
-        <span class="pb-total-v">₩117,000 / 월</span>
+        <span class="pb-total-l">편입영어의 차이는</span>
+        <span class="pb-total-v" style="font-size:15px;color:var(--navy);">Input의 질</span>
       </div>
       <div class="pb-story">
-        저는 이걸 <strong>8개월 동안 직접 다 구독했습니다.</strong>
-        총 ₩936,000을 썼어요.<br>
-        서강대, 성균관대, 중앙대 합격하고 나서야 알았습니다.<br>
-        어떤 기사가 편입에 진짜 쓸모 있는지. 어떤 섹션은 버려야 하는지.<br>
+        저는 8개월 동안 실제 영어 기사와 잡지를 계속 읽었습니다.<br>
+        그리고 서강대, 성균관대, 중앙대 합격 후에 알았습니다.<br>
+        편입영어에 필요한 건 더 많은 요령이 아니라 <strong>시험에 맞는 결의 영어 Input</strong>입니다.<br>
         <br>
-        이 PDF는 그 8개월과 ₩936,000의 결과물입니다.<br>
-        마지막 페이지에서 이걸 훨씬 싸게 활용하는 방법을 알려드립니다.
+        이 PDF는 제가 직접 걸러낸 매체, 섹션, 읽는 기준을 정리한 로드맵입니다.
       </div>
     </div>
 
-    <div class="next-hook">다음 페이지: 왜 이 방법이 편입에 먹히는가 →</div>
   </div>
   <div class="pnum">02</div>
 </div>
@@ -437,7 +528,11 @@ td.bad{color:var(--red);}
       </div>
     </div>
 
-    <div class="next-hook">다음 페이지: 어떤 섹션을 읽고 어떤 섹션을 버려야 하는가 →</div>
+    <div class="next-hook">
+      <div class="nh-kicker"><strong>다음 페이지</strong>NEXT BRIEFING / SECTION 02</div>
+      <div class="nh-title">어떤 섹션을 읽고, 어떤 섹션을 버려야 하는가</div>
+      <div class="nh-copy">The Economist를 읽는다고 끝이 아닙니다. 어떤 섹션을 버리느냐가 실제 효율을 만듭니다.</div>
+    </div>
   </div>
   <div class="pnum">03</div>
 </div>
@@ -473,22 +568,26 @@ td.bad{color:var(--red);}
       <div class="h1-body">
         <div>
           <div class="h1-tag">잠깐 · 솔직히 말하면</div>
-          <div class="h1-intro">이 잡지들 다 읽으려면 매달 이 돈이 필요합니다.</div>
+          <div class="h1-intro">이 매체들을 열어도, 진짜 문제는 여기서 시작됩니다.</div>
           <div class="h1-rows">
-            <div class="h1-row"><span>The Economist</span><span class="h1-pval">₩35,000</span></div>
-            <div class="h1-row"><span>Foreign Affairs + HBR</span><span class="h1-pval">₩38,000</span></div>
-            <div class="h1-row"><span>Bloomberg + Wired + Sci.Am</span><span class="h1-pval">₩44,000</span></div>
+            <div class="h1-row"><span>The Economist</span><span class="h1-pval">섹션 선택</span></div>
+            <div class="h1-row"><span>Foreign Affairs + HBR</span><span class="h1-pval">난이도 조절</span></div>
+            <div class="h1-row"><span>NYT + Wired + Sci.Am</span><span class="h1-pval">구조 추출</span></div>
           </div>
-          <div class="h1-total"><span class="h1-tl">합계</span><span class="h1-tv">₩117,000/월</span></div>
+          <div class="h1-total"><span class="h1-tl">진짜 비용</span><span class="h1-tv" style="font-size:13px;color:white;">판단력</span></div>
         </div>
         <div>
-          <div class="h1-story"><strong>저는 이걸 8개월 직접 다 샀습니다.</strong><br>마지막 페이지에 이 문제를 해결하는 방법이 있습니다.</div>
-          <div class="h1-cta">👇 마지막 페이지를 꼭 확인하세요.</div>
+          <div class="h1-story"><strong>매체를 아는 것과, 오늘 읽을 한 편을 고르는 것은 다릅니다.</strong><br>가치는 링크가 아니라 선별과 해석 프레임에서 생깁니다.</div>
+          <div class="h1-cta">마지막 페이지에 초기 안내방을 열어두었습니다.</div>
         </div>
       </div>
     </div>
 
-    <div class="next-hook">다음 페이지: 내 목표 학교에 맞는 매체는? →</div>
+    <div class="next-hook">
+      <div class="nh-kicker"><strong>다음 페이지 전</strong>FIELD NOTE</div>
+      <div class="nh-title">매체를 아는 것과, 오늘 읽을 한 편을 고르는 것은 다릅니다.</div>
+      <div class="nh-copy">가치는 링크가 아니라 판단에서 생깁니다. 같은 매체도 목표 학교에 따라 읽을 이유가 달라집니다.</div>
+    </div>
   </div>
   <div class="pnum">04</div>
 </div>
@@ -527,7 +626,11 @@ td.bad{color:var(--red);}
       </div>
     </div>
 
-    <div class="next-hook">다음 페이지: 실제로 어떻게 읽어야 하는가 →</div>
+    <div class="next-hook">
+      <div class="nh-kicker"><strong>다음 페이지</strong>NEXT BRIEFING / SECTION 04</div>
+      <div class="nh-title">실제로 어떻게 읽어야 하는가</div>
+      <div class="nh-copy">읽을 매체를 정했다면, 다음 승부는 루틴과 반복입니다. 좋은 Input은 쌓일 때 비로소 실력이 됩니다.</div>
+    </div>
   </div>
   <div class="pnum">05</div>
 </div>
@@ -574,7 +677,11 @@ td.bad{color:var(--red);}
       </div>
     </div>
 
-    <div class="next-hook">다음 페이지: ₩117,000짜리 걸 ₩39,000에 받는 방법 →</div>
+    <div class="next-hook">
+      <div class="nh-kicker"><strong>다음 페이지</strong>NEXT BRIEFING / FINAL</div>
+      <div class="nh-title">매주 읽을 영어 글을 직접 안내받는 방법</div>
+      <div class="nh-copy">로드맵은 방향입니다. 실전은 매주 어떤 Input을 넣고, 무엇을 남기느냐에서 갈립니다.</div>
+    </div>
   </div>
   <div class="pnum">06</div>
 </div>
@@ -590,57 +697,64 @@ td.bad{color:var(--red);}
       </div>
       <div class="cta-hero-text">
         <div class="cta-ey">수능 3~4등급 → 서강대·성균관대·중앙대 최초합 · 학원 ₩0 · 8개월</div>
-        <div class="cta-headline">내일 아침,<br>뭘 읽어야 할지<br>이미 와 있습니다.</div>
-        <div class="cta-sub">로드맵은 이 PDF로 드렸습니다.<br>남은 건 매일 실행뿐인데,<br>그게 제일 어렵다는 거 압니다.<br>그 부분을 제가 대신 해드립니다.</div>
+        <div class="cta-headline">이제부터 뭘 읽을지,<br>제가 먼저 골라드립니다.</div>
+        <div class="cta-sub">이 PDF가 방향이라면, 다음 단계는 실행입니다.<br>라저형이 직접 고른 영어 기사와 읽는 순서,<br>가져갈 표현과 구조를 초기 운영 형태로 안내합니다.</div>
       </div>
     </div>
     <div class="cta-body">
       <div class="svc-block">
         <div class="svc-head">
-          <div class="svc-name">📌 라저형 편입영어 데일리 픽</div>
-          <div class="svc-badge">EARLY BIRD</div>
+          <div class="svc-name">Weekly Input Drop · 라저형 주간 선별</div>
+          <div class="svc-badge">100명 먼저</div>
+        </div>
+        <div class="svc-intro">
+          좋은 기사를 그냥 많이 던지는 게 아닙니다. <strong>이번 주에 읽을 것, 읽는 이유, 남길 것</strong>을 같이 정리합니다.
         </div>
         <div class="svc-items">
-          <div class="s-item">오늘 30분, 어떤 기사 읽으면 되는지</div>
-          <div class="s-item">목표 학교 지문 유형과 연결해서</div>
-          <div class="s-item">단어장 없이 문맥으로 잡는 어휘 3~5개</div>
-          <div class="s-item">시험장에서 쓸 수 있는 독해 포인트 1개</div>
+          <div class="s-item"><strong>Required Read</strong> 이번 주 반드시 읽을 글 1개</div>
+          <div class="s-item"><strong>Why This Matters</strong> 왜 편입영어와 연결되는지</div>
+          <div class="s-item"><strong>Difficulty</strong> B / B+ / A / A+ 난이도 표시</div>
+          <div class="s-item"><strong>Reading Order</strong> 1회독 → 2회독 → 남길 표현</div>
+          <div class="s-item"><strong>Extract</strong> 표현, 문장 구조, 배경지식, 논리 전개</div>
+          <div class="s-item"><strong>More Reads</strong> 같은 주제로 더 읽을 글 2~4개</div>
+          <div class="s-item"><strong>Skip List</strong> 지금 읽지 않아도 되는 섹션</div>
+          <div class="s-item"><strong>Input Notes</strong> 읽을 가치가 있을 때만 쓰는 고밀도 노트</div>
         </div>
       </div>
 
       <div class="pc">
-        <div class="pc-col">
-          <div class="pc-label">잡지 6개 직접 구독 시</div>
-          <div class="pc-amount">₩117,000</div>
-          <div class="pc-sub">+ 뭘 읽을지 스스로 판단해야 함</div>
+        <div class="pc-col bad">
+          <div class="pc-label">단순 기사 링크</div>
+          <div class="pc-amount" style="font-size:14px;">LINK ONLY</div>
+          <div class="pc-sub">좋은 글이어도 뭘 봐야 할지는 남아 있음</div>
         </div>
         <div class="pc-col active">
-          <div class="pc-label">라저형 데일리 픽</div>
-          <div class="pc-amount">₩39,000</div>
-          <div class="pc-sub">잡지 개별 구독 불필요 · 언제든 해지</div>
+          <div class="pc-label">라저형 선별 Input</div>
+          <div class="pc-amount" style="font-size:14px;">READ + JUDGMENT</div>
+          <div class="pc-sub">무엇을 읽고, 왜 읽고, 무엇을 가져갈지까지</div>
         </div>
       </div>
 
       <div class="urgency">
-        <strong>지금 편입 준비 중이라면,</strong> 이번 달 안에 읽기 습관을 잡아야
-        6개월 후 시험에 맞출 수 있습니다.<br>
-        시작이 늦을수록 만회할 기간이 줄어듭니다.
+        <strong>단순히 기사 링크를 던지는 방식이 아닙니다.</strong><br>
+        이 기사를 읽는 이유가 내용인지, 구조인지, 표현인지까지 선별합니다.
+        편입영어식 추론과 연결되는 문단, 단어장에 없는 표현의 확장, 배경지식까지 같이 봅니다.
       </div>
 
       <div class="social-proof">
-        🎯 &nbsp;첫 주 무료 체험 후 결정하세요. 카드 정보 필요 없습니다.
+        초기에는 반응을 보며 포맷을 조정하기 위해 선착순 100명만 먼저 안내합니다.
       </div>
     </div>
 
     <div class="cta-bottom">
-      <div class="cta-urgent">⚠ 얼리버드 운영 중 — 인원 차면 마감합니다.</div>
-      <a class="cta-btn" href="https://open.kakao.com/o/s9rjTCti" target="_blank">
-        👉 오픈카톡으로 무료 체험 시작하기
+      <div class="cta-urgent">선착순 100명 · 공지 전용 초기 안내방</div>
+      <a class="cta-btn" href="https://open.kakao.com/o/gAr8LMti" target="_blank">
+        선착순 100명 지금 바로 참여하기
       </a>
-      <div class="cta-link">open.kakao.com/o/s9rjTCti</div>
+      <div class="cta-link">open.kakao.com/o/gAr8LMti</div>
       <div style="text-align:center;font-size:11px;color:var(--gray);margin-top:6px;line-height:1.8;padding:8px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);">
-        ① 오픈카톡 입장 → ② 라저형이 결제 링크 안내 → ③ 첫 주 무료 시작<br>
-        과외 문의 · 기타 질문도 같은 오픈카톡으로 오세요.
+        이 방은 방장 공지 전용입니다.<br>
+        초기 운영 안내, 샘플 Input Drop, 참여 조건 공지만 올라옵니다.
       </div>
       <div class="cta-fbrand">실찍눌</div>
       <div class="cta-ftag">실력으로 찍어누른다.</div>

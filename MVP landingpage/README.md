@@ -31,7 +31,7 @@ ADMIN_PASSWORD
 
 ## 파일 구조
 - `index.html` : 랜딩페이지
-- `download.html` : 다운로드 페이지 + The Input System CTA
+- `download.html` : 다운로드 페이지 + 초기 안내방 CTA
 - `style.css` : 스타일
 - `script.js` : 이메일 제출 + 이동
 - `api/leads.js` : Vercel Serverless Function + Supabase 저장
@@ -42,5 +42,4 @@ ADMIN_PASSWORD
 - `assets/guidebook.pdf` : 무료 가이드북 PDF
 
 ## 나중에 바꿀 것
-- Toss/결제 링크: `download.html` 안의 `href="#"` 부분 변경
 - 도메인: 브랜드명이 확정되면 Vercel에서 연결
