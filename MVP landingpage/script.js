@@ -1,33 +1,7 @@
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function getEmailFromForm(form) {
-  const local = form.querySelector(".email-local")?.value.trim();
-  const domainSelect = form.querySelector(".email-domain");
-  const customDomain = form.querySelector(".email-custom-domain")?.value.trim();
-  const domain = domainSelect?.value === "custom" ? customDomain : domainSelect?.value;
-
-  if (!local || !domain) return "";
-
-  return `${local}@${domain}`.toLowerCase();
-}
-
-function setupEmailBuilders() {
-  document.querySelectorAll("[data-email-builder]").forEach((builder) => {
-    const domainSelect = builder.querySelector(".email-domain");
-    const customDomain = builder.querySelector(".email-custom-domain");
-
-    domainSelect?.addEventListener("change", () => {
-      const isCustom = domainSelect.value === "custom";
-      customDomain.hidden = !isCustom;
-      customDomain.required = isCustom;
-
-      if (isCustom) {
-        customDomain.focus();
-      } else {
-        customDomain.value = "";
-      }
-    });
-  });
+  return form.querySelector(".email-input")?.value.trim().toLowerCase() || "";
 }
 
 function setFormLoading(form, isLoading) {
@@ -98,8 +72,6 @@ async function handleLeadSubmit(event) {
     setFormLoading(form, false);
   }
 }
-
-setupEmailBuilders();
 
 document.getElementById("leadForm")?.addEventListener("submit", handleLeadSubmit);
 document.getElementById("leadFormBottom")?.addEventListener("submit", handleLeadSubmit);

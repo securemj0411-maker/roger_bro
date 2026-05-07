@@ -91,12 +91,8 @@ h3{font-size:20px;margin-bottom:10px}
   border-radius:18px;
   box-shadow:0 18px 42px rgba(0,0,0,.22);
 }
-.email-builder{
+.email-input{
   flex:1;
-  display:grid;
-  grid-template-columns:minmax(130px,1fr) auto minmax(150px,.85fr);
-  gap:6px;
-  align-items:center;
 }
 .lead-form input,.lead-form select{
   min-width:0;
@@ -120,17 +116,6 @@ h3{font-size:20px;margin-bottom:10px}
     linear-gradient(135deg,#cbd4e5 50%,transparent 50%) calc(100% - 12px) 22px/6px 6px no-repeat,
     rgba(2,8,18,.72);
   cursor:pointer;
-}
-.email-at{
-  color:white;
-  font-family:'DM Mono',monospace;
-  font-size:20px;
-  font-weight:500;
-  padding:0 2px;
-  opacity:.86;
-}
-.email-custom-domain{
-  grid-column:1 / -1;
 }
 .lead-form input::placeholder{color:#778398}
 .lead-form button,.primary-btn{
@@ -486,7 +471,6 @@ h3{font-size:20px;margin-bottom:10px}
   .split,.creator{grid-template-columns:1fr}
   .creator img{width:160px;height:160px}
   .lead-form{flex-direction:column}
-  .email-builder{grid-template-columns:1fr auto 1fr}
   .lead-form button{width:100%}
 }
 
@@ -498,12 +482,6 @@ h3{font-size:20px;margin-bottom:10px}
   .eyebrow{font-size:10px;letter-spacing:.14em}
   h1{font-size:32px;letter-spacing:-.045em;margin-bottom:9px}
   .sub{font-size:14.5px;line-height:1.55;margin-bottom:10px}
-  .email-builder{
-    grid-template-columns:1fr;
-  }
-  .email-at{
-    display:none;
-  }
   .admin-header,.admin-grid,.admin-auth,.upload-box,.panel-head{
     display:block;
   }
