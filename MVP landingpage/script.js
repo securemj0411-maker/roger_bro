@@ -30,10 +30,32 @@ function setupEmailBuilders() {
   });
 }
 
+function setFormLoading(form, isLoading) {
+  const button = form.querySelector("button");
+  const status = form.parentElement?.querySelector("[data-form-status]");
+
+  form.classList.toggle("is-loading", isLoading);
+
+  if (button) {
+    if (isLoading) {
+      button.disabled = true;
+      button.dataset.originalText = button.textContent;
+      button.innerHTML = '<span class="btn-spinner" aria-hidden="true"></span><span>다운로드 페이지 준비 중</span>';
+    } else {
+      button.disabled = false;
+      button.textContent = button.dataset.originalText || "즉시 무료 가이드북 받기";
+    }
+  }
+
+  if (status) {
+    status.textContent = isLoading ? "잠시만 기다려주세요. 이메일 저장 후 바로 이동합니다." : "";
+    status.hidden = !isLoading;
+  }
+}
+
 async function handleLeadSubmit(event) {
   event.preventDefault();
   const form = event.currentTarget;
-  const button = form.querySelector("button");
   const email = getEmailFromForm(form);
 
   if (!EMAIL_PATTERN.test(email)) {
@@ -41,11 +63,7 @@ async function handleLeadSubmit(event) {
     return;
   }
 
-  if (button) {
-    button.disabled = true;
-    button.dataset.originalText = button.textContent;
-    button.textContent = "처리 중";
-  }
+  setFormLoading(form, true);
 
   try {
     if (window.location.protocol === "file:") {
@@ -77,10 +95,7 @@ async function handleLeadSubmit(event) {
     window.location.href = "./download.html";
   } catch (error) {
     alert("저장 중 문제가 발생했습니다. 잠시 후 다시 시도해주세요.");
-    if (button) {
-      button.disabled = false;
-      button.textContent = button.dataset.originalText || "무료 가이드북 받기";
-    }
+    setFormLoading(form, false);
   }
 }
 
