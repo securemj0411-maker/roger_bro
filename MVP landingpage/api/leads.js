@@ -32,10 +32,6 @@ module.exports = async function handler(request, response) {
   const supabaseUrl = process.env.SUPABASE_URL;
   const supabaseServiceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-  if (!supabaseUrl || !supabaseServiceRoleKey) {
-    return sendJson(response, 500, { error: "Lead storage is not configured" });
-  }
-
   const body = parseBody(request.body);
   const email = normalizeText(body.email, "").toLowerCase();
 
@@ -52,6 +48,11 @@ module.exports = async function handler(request, response) {
     updated_at: new Date().toISOString(),
   };
 
+  if (!supabaseUrl || !supabaseServiceRoleKey) {
+    console.warn("Lead storage is not configured. Returning success without remote storage.");
+    return sendJson(response, 200, { ok: true, stored: false });
+  }
+
   const endpoint = `${supabaseUrl.replace(/\/$/, "")}/rest/v1/leads?on_conflict=email`;
   const supabaseResponse = await fetch(endpoint, {
     method: "POST",
@@ -65,8 +66,9 @@ module.exports = async function handler(request, response) {
   });
 
   if (!supabaseResponse.ok) {
-    return sendJson(response, 502, { error: "Could not save lead" });
+    console.warn("Could not save lead to Supabase", await supabaseResponse.text());
+    return sendJson(response, 200, { ok: true, stored: false });
   }
 
-  return sendJson(response, 200, { ok: true });
+  return sendJson(response, 200, { ok: true, stored: true });
 };
